@@ -10,9 +10,13 @@ the server side rendered content and the client sees the client side rendered co
 To get started just clone the repo
 
 `git clone git@github.com:geapi/server-side-jade.git`
+
 `cd server-side-jade`
+
 `yes`
+
 `bundle`
+
 `rails s`
 
 
