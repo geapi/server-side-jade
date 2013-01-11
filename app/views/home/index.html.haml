@@ -1,0 +1,20 @@
+%div{style: "float: left;"}
+  %label#where-is-it-rendered #{@no_backbone ? 'Server ' : 'Client '} Side Rendered
+.right
+  %a.js-toggle-backbone{href: "#{@no_backbone ? '/' : '/?no_backbone=true'}", style: "float: right;"} #{@no_backbone ? 'Switch to client side rendered' : 'Switch to server side rendered'}
+.clearfix
+%h3 Render jade templates on the server
+
+%p This part is straight up html, the parts below are generated via jade templates. The jade templates render even if your javascript is disabled or the client side views that populate the templates are omitted.
+
+
+#menu
+  = html_from_jade_template("home/menu", locals: {items: [{title: "Server"}, {title: "Side"}, {title: "Rendered"}]})
+#content
+  = html_from_jade_template("home/content", locals: {body: "This content comes from the server. Remove the param from the url or toggle with the link in the upper right." })
+
+-unless @no_backbone
+  :javascript
+    $(document).ready(function(){
+        new SSJ.Routers.Home();
+      });

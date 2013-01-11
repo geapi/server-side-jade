@@ -1,0 +1,25 @@
+!!! 5
+
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+
+    %title Server Side Jade template rendering
+    = csrf_meta_tags
+
+    = yield :head
+
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+
+  %body
+    .container
+      :javascript
+          $(document).ready(function() {
+            if (!!("ontouchstart" in window)) $("body").addClass("touch-enabled");
+          });
+      %header
+        .wrapper.clearfix
+      #main{:class => "wrapper clearfix"}
+        = yield
